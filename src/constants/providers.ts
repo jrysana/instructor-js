@@ -7,6 +7,7 @@ export const PROVIDERS = {
   OAI: "OAI",
   ANYSCALE: "ANYSCALE",
   TOGETHER: "TOGETHER",
+  RYSANA: "RYSANA",
   OTHER: "OTHER"
 } as const
 
@@ -18,12 +19,14 @@ export const PROVIDER_SUPPORTED_MODES: {
   [PROVIDERS.OTHER]: [MODE.FUNCTIONS, MODE.TOOLS, MODE.JSON, MODE.JSON_SCHEMA],
   [PROVIDERS.OAI]: [MODE.FUNCTIONS, MODE.TOOLS, MODE.JSON, MODE.MD_JSON],
   [PROVIDERS.ANYSCALE]: [MODE.TOOLS, MODE.JSON, MODE.JSON_SCHEMA],
-  [PROVIDERS.TOGETHER]: [MODE.TOOLS, MODE.JSON, MODE.JSON_SCHEMA]
+  [PROVIDERS.TOGETHER]: [MODE.TOOLS, MODE.JSON, MODE.JSON_SCHEMA],
+  [PROVIDERS.RYSANA]: [MODE.FUNCTIONS, MODE.TOOLS, MODE.JSON, MODE.JSON_SCHEMA]
 } as const
 
 export const NON_OAI_PROVIDER_URLS = {
   [PROVIDERS.ANYSCALE]: "api.endpoints.anyscale",
   [PROVIDERS.TOGETHER]: "api.together.xyz",
+  [PROVIDERS.RYSANA]: "api.rysana.com",
   [PROVIDERS.OAI]: "api.openai.com"
 } as const
 
@@ -103,6 +106,12 @@ export const PROVIDER_SUPPORTED_MODES_BY_MODEL = {
       "mistralai/Mistral-7B-Instruct-v0.1",
       "togethercomputer/CodeLlama-34b-Instruct"
     ]
+  },
+  [PROVIDERS.RYSANA]: {
+    [MODE.JSON_SCHEMA]: ["*"],
+    [MODE.FUNCTIONS]: ["*"],
+    [MODE.TOOLS]: ["*"],
+    [MODE.JSON]: ["*"]
   },
   [PROVIDERS.ANYSCALE]: {
     [MODE.JSON_SCHEMA]: [
